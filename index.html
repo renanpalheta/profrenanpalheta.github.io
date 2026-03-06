@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
+
   <title>Prof. Renan Palheta | Engenharia & Educação</title>
   <meta name="description" content="Portfólio de Renan Palheta: Professor de Informática e Engenheiro de Computação focado em IA, Salesforce e Web Development.">
   <meta property="og:title" content="Prof. Renan Palheta | Engenheiro & Educador">
   <meta property="og:image" content="LOGO_PROF.png">
+  <link rel="icon" href="LOGO_PROF.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  
   <style>
     :root {
       --primary: #1b2a47;
@@ -19,6 +18,7 @@
       --light: #f4f7fa;
       --dark-blue: #112240;
       --success: #36c805;
+      --pdf-red: #e74c3c;
     }
 
     body {
@@ -28,15 +28,16 @@
       background-color: var(--light);
       color: #2c3e50;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
-    
+
     header img {
       width: 160px;
       height: 160px;
@@ -44,10 +45,12 @@
       border-radius: 50%;
       border: 4px solid rgba(255,255,255,0.2);
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
+    header img:hover { transform: scale(1.05); }
 
-    header h1 { margin: 15px 0 5px; font-size: 2.2rem; }
-    header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    header h1 { margin: 15px 0 5px; font-size: 2.5rem; letter-spacing: -1px; }
+    header p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; font-weight: 300; }
 
     nav {
       background-color: var(--dark-blue);
@@ -56,108 +59,159 @@
       z-index: 1000;
       padding: 15px 0;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     nav a {
       color: #ecf0f1;
-      margin: 0 12px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
       transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     nav a:hover { color: var(--accent); }
 
-    section { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+    section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
     h2 { 
       color: var(--primary); 
-      border-left: 5px solid var(--secondary); 
+      border-left: 6px solid var(--secondary); 
       padding-left: 15px; 
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-size: 1.8rem;
     }
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
-      border: 1px solid #e0e6ed;
-      transition: all 0.3s ease;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(28, 110, 184, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-    .card i { font-size: 2rem; color: var(--secondary); margin-bottom: 15px; }
-    .card strong { font-size: 1.2rem; display: block; margin-bottom: 10px; color: var(--primary); }
-    .card p { font-size: 0.95rem; color: #555; flex-grow: 1; }
+    .card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 40px rgba(27, 42, 71, 0.1);
+      border-color: var(--secondary);
+    }
+    
+    .card i.main-icon { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+    .card strong { font-size: 1.3rem; display: block; margin-bottom: 12px; color: var(--primary); }
+    .card p { font-size: 1rem; color: #5d6d7e; flex-grow: 1; }
 
-    .tech-badges { margin: 15px 0; }
+    .tech-badges { margin: 15px 0; display: flex; flex-wrap: wrap; gap: 8px; }
     .badge {
       background: #eef2f7;
       color: var(--secondary);
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
       font-size: 0.75rem;
-      font-weight: bold;
-      margin-right: 5px;
+      font-weight: 700;
     }
+
+    .pdf-link {
+      text-decoration: none;
+      color: var(--primary);
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+    .pdf-link:hover { background: #fff; border-color: var(--pdf-red); color: var(--pdf-red); }
+    .pdf-link i { color: var(--pdf-red); font-size: 1.2rem; }
+    .pdf-link small { display: block; font-size: 0.7rem; color: #888; font-weight: 400; }
 
     .link-action {
       text-decoration: none;
       color: var(--secondary);
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 10px;
-      transition: color 0.2s;
+      margin-top: 15px;
     }
-    .link-action:hover { color: var(--accent); }
 
     .card.mestrado-focus {
       border: 2px solid var(--secondary);
-      background: linear-gradient(to bottom right, #ffffff, #f0f7ff);
+      background: linear-gradient(145deg, #ffffff, #f0f7ff);
+    }
+    .card.mestrado-focus::after {
+      content: "DESTAQUE";
+      position: absolute;
+      top: 15px;
+      right: -30px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.7rem;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      font-weight: bold;
     }
 
     .hotmart-box {
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      border: 2px dashed var(--success);
+      background: white;
+      padding: 60px 40px;
+      border-radius: 30px;
+      border: 3px dashed var(--success);
       text-align: center;
+      box-shadow: 0 15px 30px rgba(54, 200, 5, 0.1);
     }
     .btn-hotmart {
       background: var(--success);
       color: white;
-      padding: 14px 28px;
+      padding: 18px 40px;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 800;
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(54, 200, 5, 0.3);
+      font-size: 1.1rem;
     }
+    .btn-hotmart:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(54, 200, 5, 0.4); }
 
     footer {
       background: var(--primary);
       color: white;
       text-align: center;
-      padding: 50px 20px;
-      margin-top: 80px;
+      padding: 60px 20px;
+      margin-top: 100px;
     }
+    .social-links a {
+      color: white;
+      margin: 0 20px;
+      font-size: 1.5rem;
+      transition: 0.3s;
+      opacity: 0.8;
+    }
+    .social-links a:hover { opacity: 1; color: var(--accent); transform: translateY(-3px); display: inline-block; }
 
     @media(max-width:600px){
-      header h1 { font-size: 1.8rem; }
-      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-      nav a { margin: 5px; }
+      header h1 { font-size: 2rem; }
+      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+      nav a { margin: 5px; font-size: 0.8rem; }
+      .grid-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -166,12 +220,12 @@
   <header>
     <img src="LOGO_PROF.png" alt="Foto Prof. Renan Palheta" loading="lazy">
     <h1>Renan Palheta</h1>
-    <p>Engenheiro de Computação | Mestre em Potencial | Professor de Informática para Concursos</p>
+    <p>Engenheiro de Computação | Pesquisador de Mestrado em IA & IoT | Especialista em Informática para Concursos</p>
   </header>
 
   <nav>
     <a href="#educacional">Educação</a>
-    <a href="#engenharia">Engenharia & Pesquisa</a>
+    <a href="#engenharia">Engenharia</a>
     <a href="#material">Curso Completo</a>
     <a href="#contato">Contato</a>
   </nav>
@@ -179,37 +233,38 @@
   <section id="educacional">
     <h2><i class="fas fa-graduation-cap"></i> Projetos Educacionais</h2>
     <div class="grid-container">
-      
+
       <div class="card">
-        <i class="fas fa-book-reader"></i>
-        <strong>Materiais Gratuitos por Disciplina</strong>
-        <p>Clique abaixo para abrir o conteúdo em uma nova página:</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
-          <a href="pdfs/informatica-basica.pdf" class="link-action" target="_blank">
-            <i class="fas fa-desktop"></i> Informática Básica
+        <i class="fas fa-book-reader main-icon"></i>
+        <strong>Materiais Gratuitos (PDF)</strong>
+        <p>Conteúdo didático focado nos principais editais do país (FGV, CESPE, VUNESP).</p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+          <a href="pdfs/informatica-basica.pdf" class="pdf-link" target="_blank">
+            <i class="fas fa-file-pdf"></i>
+            <div>Informática Básica <small>Windows, Word, Excel e Internet</small></div>
           </a>
-          <a href="pdfs/seguranca-redes.pdf" class="link-action" target="_blank">
-            <i class="fas fa-shield-alt"></i> Segurança e Redes
+          <a href="pdfs/seguranca-redes.pdf" class="pdf-link" target="_blank">
+            <i class="fas fa-file-pdf"></i>
+            <div>Segurança e Redes <small>Criptografia, Malware e Protocolos</small></div>
           </a>
-          <a href="pdfs/informatica-avancada.pdf" class="link-action" target="_blank">
-            <i class="fas fa-code-branch"></i> Informática Avançada
-          </a>
-          <a href="pdfs/sistemas-operacionais.pdf" class="link-action" target="_blank">
-            <i class="fab fa-windows"></i> Sistemas Operacionais
+          <a href="pdfs/informatica-avancada.pdf" class="pdf-link" target="_blank">
+            <i class="fas fa-file-pdf"></i>
+            <div>Informática Avançada <small>Lógica e Banco de Dados</small></div>
           </a>
         </div>
       </div>
 
       <div class="card">
-        <i class="fas fa-chalkboard"></i>
-        <strong>Sistema de Controle de Alunos</strong>
-        <p>Aplicação para gestão de turmas e acompanhamento de desempenho escolar.</p>
+        <i class="fas fa-chalkboard-teacher main-icon"></i>
+        <strong>Gestão Escolar Inteligente</strong>
+        <p>Sistema personalizado para automação de notas, frequências e evolução pedagógica.</p>
         <div class="tech-badges">
           <span class="badge">Excel Avançado</span>
           <span class="badge">VBA</span>
+          <span class="badge">Automação</span>
         </div>
-        <a href="#" class="link-action">Ver Detalhes</a>
+        <a href="#" class="link-action">Ver demonstração <i class="fas fa-arrow-right"></i></a>
       </div>
 
     </div>
@@ -218,54 +273,58 @@
   <section id="engenharia">
     <h2><i class="fas fa-microchip"></i> Pesquisa & Engenharia</h2>
     <div class="grid-container">
-      
+
       <div class="card mestrado-focus">
-        <i class="fas fa-clock"></i>
-        <strong>Smartwatch AI Monitor (Pesquisa)</strong>
-        <p>Projeto de mestrado focado em monitoramento bio-interativo de funções vitais com IA.</p>
+        <i class="fas fa-clock main-icon"></i>
+        <strong>Smartwatch AI Monitor</strong>
+        <p>Pesquisa de mestrado desenvolvendo algoritmos de Machine Learning para monitoramento de saúde em tempo real via dispositivos vestíveis.</p>
         <div class="tech-badges">
           <span class="badge">IoT</span>
           <span class="badge">Machine Learning</span>
           <span class="badge">Python</span>
         </div>
-        <a href="#" class="link-action"><i class="fab fa-github"></i> Ver Pré-projeto</a>
+        <a href="#" class="link-action"><i class="fab fa-github"></i> Ver Documentação</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-chart-line"></i>
-        <strong>Dashboard de Dados Interativo</strong>
-        <p>Visualização dinâmica de métricas biológicas e performance de hardware.</p>
+        <i class="fas fa-chart-line main-icon"></i>
+        <strong>Data Visualization Dashboard</strong>
+        <p>Interface interativa para análise de telemetria de hardware e métricas biológicas complexas.</p>
         <div class="tech-badges">
           <span class="badge">Web Dev</span>
           <span class="badge">Plotly</span>
+          <span class="badge">Data Science</span>
         </div>
-        <a href="#" class="link-action"><i class="fas fa-external-link-alt"></i> Abrir Demo</a>
+        <a href="#" class="link-action"><i class="fas fa-external-link-alt"></i> Abrir Dashboard</a>
       </div>
 
       <div class="card">
-        <i class="fab fa-salesforce"></i>
+        <i class="fab fa-salesforce main-icon"></i>
         <strong>Salesforce Development</strong>
-        <p>Automações Apex e componentes LWC para gestão de CRM.</p>
+        <p>Desenvolvimento de soluções robustas em ecossistema CRM utilizando Apex e Lightning Web Components (LWC).</p>
         <div class="tech-badges">
           <span class="badge">Apex</span>
           <span class="badge">LWC</span>
+          <span class="badge">CRM Cloud</span>
         </div>
-        <a href="#" class="link-action"><i class="fab fa-github"></i> Repositório</a>
+        <a href="#" class="link-action"><i class="fab fa-github"></i> Ver Repositórios</a>
       </div>
 
     </div>
   </section>
 
   <section id="material" class="hotmart-box">
-    <h2>🚀 Domine a Informática</h2>
-    <p>Curso completo com certificado para concursos e formação profissional.</p>
-    <a href="https://hotmart.com/seu-link" class="btn-hotmart" target="_blank">ACESSAR MATERIAL COMPLETO</a>
+    <h2 style="border:none; justify-content: center; margin-bottom: 10px;">🚀 Domine a Informática de Vez</h2>
+    <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 20px;">Curso completo do zero ao avançado, com metodologia focada em aprovação e certificado incluso.</p>
+    <a href="https://hotmart.com/seu-link" class="btn-hotmart" target="_blank">QUERO MEU ACESSO AGORA</a>
   </section>
 
   <footer id="contato">
-    <div style="margin-bottom: 25px;">
-      <a href="mailto:prof.renanpalheta@gmail.com" style="color:white; margin: 0 15px;"><i class="fas fa-envelope fa-xl"></i></a>
-      <a href="https://instagram.com/engrpalheta" style="color:white; margin: 0 15px;"><i class="fab fa-instagram fa-xl"></i></a>
+    <div class="social-links" style="margin-bottom: 30px;">
+      <a href="mailto:prof.renanpalheta@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/seu-perfil" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://instagram.com/engrpalheta" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/profrenanpalheta" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
     </div>
     <p>&copy; 2026 - Renan Palheta. Engenharia da Computação e Educação.</p>
   </footer>
